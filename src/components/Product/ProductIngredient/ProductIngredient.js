@@ -40,7 +40,7 @@ class ProductIngredient extends Component {
 
 }
 
-ProductIngredient.PropTypes = {
+ProductIngredient.propTypes = {
     type: PropTypes.string.isRequired
 };
 
