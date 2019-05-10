@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Aux from '../../hoc/Aux';
 import Product from '../../components/Product/Product';
+import BuildControls from '../../components/Product/BuildControls/BuildControls';
 
 class ProductBuilder extends Component {
     // constructor(props) {
@@ -22,7 +23,7 @@ class ProductBuilder extends Component {
         return (
             <Aux>
                 <Product ingredients={this.state.ingredients} />         
-                <div>Build Controls</div>   
+                <BuildControls />
             </Aux>
         );
     }
