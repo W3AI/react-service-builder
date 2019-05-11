@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 import Product from '../../components/Product/Product';
 import BuildControls from '../../components/Product/BuildControls/BuildControls';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Product/OrderSummary/OrderSummary';
 
 const INGREDIENTS_PRICES = {
     salad: 0.5,
@@ -79,6 +81,9 @@ class ProductBuilder extends Component {
         // e.g.: {salad: true, meat: false, ...}
         return (
             <Aux>
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients} />
+                </Modal>
                 <Product ingredients={this.state.ingredients} />         
                 <BuildControls 
                     ingredientAdded={this.addIngredientHandler}
