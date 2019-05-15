@@ -26,13 +26,17 @@ class ProductBuilder extends Component {
         totalPrice: 4,
         purchasable: false,
         purchasing: false,
-        loading: false
+        loading: false,
+        error: false
     }
 
     componentDidMount() {
         axios.get('https://react-service-builder.firebaseio.com/ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data });
+            })
+            .catch(error => {
+                this.setState({error: true})
             });
     }
 
@@ -120,7 +124,7 @@ class ProductBuilder extends Component {
             disabledInfo[key] = disabledInfo[key] <= 0
         }
         let orderSummary = null;
-        let product = <Spinner />
+        let product = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
 
         if (this.state.ingredients) {
             product = (
