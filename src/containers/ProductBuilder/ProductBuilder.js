@@ -6,6 +6,7 @@ import BuildControls from '../../components/Product/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Product/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
 
 const INGREDIENTS_PRICES = {
@@ -143,4 +144,4 @@ class ProductBuilder extends Component {
     }
 }
 
-export default ProductBuilder;
+export default withErrorHandler(ProductBuilder, axios);
