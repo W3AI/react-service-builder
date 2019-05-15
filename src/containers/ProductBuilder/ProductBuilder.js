@@ -160,4 +160,4 @@ class ProductBuilder extends Component {
     }
 }
 
-export default withErrorHandler(ProductBuilder, axios);
+export default withErrorHandler( ProductBuilder, axios );
