@@ -5,6 +5,7 @@ import Product from '../../components/Product/Product';
 import BuildControls from '../../components/Product/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Product/OrderSummary/OrderSummary';
+import axios from '../../axios-orders';
 
 const INGREDIENTS_PRICES = {
     salad: 0.5,
@@ -81,7 +82,24 @@ class ProductBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        alert('You continue!');
+        // alert('You continue!');
+        const order = {
+            ingredients: this.state.ingredients,
+            price: this.state.totalPrice,
+            customer: {
+                name: 'Steve Muller',
+                address: {
+                    street: 'Teststreet 1',
+                    zipcode: '245225',
+                    country: 'Enland'
+                },
+                email: 'test@w3ai.net'
+            },
+            deliveryMethod: 'fastest'
+        };       // TotalPrice should be recalculated on server to avoid user fake calculations
+        axios.post('/orders.json', order)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));     // To connect to firebase need .json
     }
 
     render () {
